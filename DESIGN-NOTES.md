@@ -15,7 +15,7 @@ I started by clicking through the current site on a phone. Two things explained 
 
 **2. Upload replaces the form, and keeps the intent when the file isn't there.** The CTA opens a native sheet: drag and drop on desktop, file picker or camera on mobile, then upload progress, a visible analysis checklist, and a free preview of the findings with one risk shown and two locked. Next to the dropzone there is a second path: *"Contract not on this device? Email me a secure upload link."* That one line is the mobile strategy. A phone visitor who can't upload no longer bounces. They leave an email and finish on the laptop. (Everything is simulated in the browser. No file is sent anywhere.)
 
-**3. Show the product, then prove it.** The hero's centerpiece is a physician's clause (§ 7.3, tail coverage) redlined the way Word shows track changes: the risky sentence struck in red, employer-paid language inserted in green, a comment with the dollar exposure. Right below the hero, the numbers sit as a quiet strip, not a section, and the page goes straight into how it works: three steps that advance on their own, each with a live preview (upload, redline, negotiation email). A diagram then shows what the engine checks and what it flags. Selling the product comes before any price comparison.
+**3. Show the product, then prove it.** The hero's centerpiece is a physician's clause (§ 7.3, tail coverage) redlined the way Word shows track changes: the risky sentence struck in red, employer-paid language inserted in green, a comment with the dollar exposure. Right below the hero, the numbers sit as a quiet strip, not a section, and the page goes straight into how it works: three steps that advance on their own, each with a live preview (upload, redline, negotiation email). On desktop the three steps use the reference's pinned-scroll pattern: the text stays fixed on the left while each step's mockup assembles on the right (upload from the phone, the redline with a risk summary, the negotiation email with the full financial analysis). On mobile the same steps become an auto-advancing accordion. A diagram then shows what the engine checks and what it flags. Selling the product comes before any price comparison.
 
 **4. The existing brand, made to look like it can be trusted with a contract.** I kept Redline MD's logo, red, navy and yellow, and cropped off the misspelled tagline. One sans family (Hanken Grotesk) with mono only for technical data, one 4px radius, no decorative gradients. Real footage of residents and of a signature replaces the generic dashboard mockups, so the page shows the person and the moment it is about. The structure and motion follow digai.ai (two-tone title, pixel grid, auto-advancing steps, live diagram, dark proof section), translated into this brand. The page also ships in English and Portuguese.
 
@@ -23,9 +23,20 @@ Trust replaces the five unlinked certification badges with three plain promises 
 
 The full token and component list is in [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md).
 
-## Things I marked as placeholders
+## What comes from the current site, and what is a proposal
 
-Turnaround (I kept the current site's 24 hours rather than promising minutes), the money-back guarantee, the $10,000+ average, the advisory board, and both testimonials, which are labeled "Illustrative". The free preview before payment is a proposal for the client, not current behavior.
+Kept from redlinemd.ai as the client states it today:
+
+- $199 flat, results within 24 hours, up to 30 pages per contract.
+- "3,000+ contracts reviewed" (now in the stats strip).
+- "Three contract reviews for the price of one" (shown as "Up to 3 contracts" on the price card; the exact offer needs confirming).
+- "Includes a full financial analysis" (now a named deliverable in step 3 and in the upload result).
+- The security claims: AES-256, SOC 2 Type I, ISO 27001, GDPR (stated in text instead of unlinked badges).
+- The sample report: "See a sample report" opens the PDF the client already publishes.
+
+From the challenge brief: the $500+ attorney comparison and the $10,000+ tail-insurance figure. The current site says "up to $10,000"; I kept the brief's "$10,000+" because it is the number Foundey wrote.
+
+Proposals of mine, to confirm with the client before launch: the money-back guarantee, "deleted after review", "never shared with your employer", the free risk preview before payment, the email-me-a-link path, comparison against specialty and state benchmarks, the advisory board, and both testimonials (labeled "Illustrative" on the page). The dollar figures inside the mockups are examples.
 
 ## With more time
 

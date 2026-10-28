@@ -26,7 +26,8 @@ export function SpecialtyMarquee() {
 const STATS = [
   { value: 199, prefix: "$", suffix: "" },
   { value: 24, prefix: "", suffix: "h" },
-  { value: 30, prefix: "", suffix: "" },
+  /* The client's own claim on the current site ("3,000+ contracts reviewed"). */
+  { value: 3000, prefix: "", suffix: "+" },
   { value: 10000, prefix: "$", suffix: "+" },
 ];
 

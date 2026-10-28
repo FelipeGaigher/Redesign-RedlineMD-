@@ -58,7 +58,8 @@ Two-tone titles: the base line in `ink`, the stakes in `navy` (H1: "Don't sign y
 | Price card | `Hero.tsx` | $199 flat vs struck $500+ |
 | Specialty marquee | `ProofStrip.tsx` | 40s loop, pauses on hover, edge fade |
 | Stats strip | `ProofStrip.tsx` | 4 counters, count up once |
-| Step accordion | `HowItWorks.tsx` | auto-advances every 6.5s, active rule fills as progress, preview swaps on the right |
+| How it works, desktop | `HowSticky.tsx` | left column pinned (`sticky top-0 h-screen`), one panel per step on the right; the step whose card crosses the middle band owns the left text; cards assemble back-then-front when half visible, and replay on return |
+| How it works, mobile | `HowItWorks.tsx` | accordion, auto-advances every 6.5s, active rule fills as progress, preview below |
 | Checks diagram | `Checks.tsx` | inputs → engine with live counter → findings landing one by one |
 | Video band | `Bands.tsx` | full-bleed loop, navy scrim for legibility, statement bottom-left |
 | Dark proof section | `Support.tsx` (`Voices`) | navy, white pixel grid, quote cards |
@@ -73,7 +74,8 @@ Two-tone titles: the base line in `ink`, the stakes in `navy` (H1: "Don't sign y
 | Section reveal | 500ms, 80ms stagger, y 24 → 0 | `cubic-bezier(.22,1,.36,1)` |
 | Title line from mask | 700ms, 120ms between lines | same |
 | Counters | 1.2s, once | same |
-| Accordion step | 6.5s, linear progress rule | linear |
+| Accordion step (mobile) | 6.5s, linear progress rule | linear |
+| Pinned-scroll step swap (desktop) | text 350ms; back card 600ms, front card +350ms, list rows 350ms apart | same |
 | Redline loop | 6s cycle, paused off-screen | — |
 | Video | plays only near the viewport, paused off-screen | — |
 

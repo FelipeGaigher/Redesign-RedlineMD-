@@ -1,6 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useT } from "../lib/i18n";
-import { scrollToId } from "../lib/lenis";
 import { EASE, revealChild, revealParent } from "../lib/motion";
 import { useUpload } from "../lib/upload";
 import { ContractPreview } from "./ContractPreview";
@@ -8,6 +7,9 @@ import { CtaButton } from "./CtaButton";
 import { Upload } from "./Icons";
 import { LoopVideo } from "./LoopVideo";
 import { PixelGrid } from "./PixelGrid";
+
+/* The sample report the client already publishes on the current site. */
+const SAMPLE_REPORT = "https://drive.google.com/file/d/1Tkgo8HMq822U5ajoil6MlUDR917C6CVU/view";
 
 export function Hero() {
   const { openUpload } = useUpload();
@@ -62,8 +64,9 @@ export function Hero() {
               {h.cta}
             </CtaButton>
             <a
-              href="#how"
-              onClick={(e) => { e.preventDefault(); scrollToId("how"); }}
+              href={SAMPLE_REPORT}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex h-11 items-center justify-center text-[16px] font-semibold text-navy underline decoration-navy/25 decoration-2 underline-offset-[6px] transition-colors hover:decoration-navy"
             >
               {h.secondary}
@@ -114,7 +117,7 @@ function Tick() {
   );
 }
 
-function PriceCard({ className = "", onStart, t }: { className?: string; onStart: () => void; t: { flat: string; vs: string; legal: string; start: string } }) {
+function PriceCard({ className = "", onStart, t }: { className?: string; onStart: () => void; t: { flat: string; vs: string; legal: string; start: string; includes: string } }) {
   return (
     <div className={`flex items-center justify-between gap-5 rounded-ui border border-line bg-surface p-4 ${className}`}>
       <div>
@@ -124,6 +127,8 @@ function PriceCard({ className = "", onStart, t }: { className?: string; onStart
         <p className="mt-1.5 text-[13px] text-muted">
           {t.vs} <span className="tabular line-through decoration-red decoration-2">$500+</span> {t.legal}
         </p>
+        {/* Placeholder: the current site says "three contract reviews for the price of one"; confirm the exact offer. */}
+        <p className="mt-1 text-[12px] font-medium text-accept">{t.includes}</p>
       </div>
       <button
         type="button"
