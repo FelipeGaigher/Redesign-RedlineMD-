@@ -11,15 +11,17 @@ I started by clicking through the current site on a phone. Two things explained 
 
 ## Four decisions
 
-**1. One action, always under the thumb.** "Upload your contract" is the only primary button on the page, in ink on paper (16:1 contrast). I tested a trust blue (#1D4ED8). It passed AA too, but it read as SaaS. Ink reads as legal. On mobile, a fixed bar with the price and the button slides in once the hero CTA scrolls away, and hides at the footer and while the upload sheet is open.
+**1. One action, always under the thumb.** "Upload your contract" is the only primary button on the page, in the brand's existing yellow with charcoal text (13:1). Everything else is a navy outline or a text link. On mobile, a fixed bar with the price and the button slides in once the hero CTA scrolls away, and hides at the footer and while the upload sheet is open.
 
 **2. Upload replaces the form, and keeps the intent when the file isn't there.** The CTA opens a native sheet: drag and drop on desktop, file picker or camera on mobile, then upload progress, a visible analysis checklist, and a free preview of the findings with one risk shown and two locked. Next to the dropzone there is a second path: *"Contract not on this device? Email me a secure upload link."* That one line is the mobile strategy. A phone visitor who can't upload no longer bounces. They leave an email and finish on the laptop. (Everything is simulated in the browser. No file is sent anywhere.)
 
-**3. Show the product instead of describing it.** The hero's centerpiece is a real-looking clause, § 7.3 Professional liability, being redlined. The physician-paid tail sentence is struck in red, employer-paid language is inserted in green, and a tag shows "Risk: ~$12,000 exposure". It loops every 6 seconds, pauses off-screen, and stays static with reduced motion. Within three seconds it says what the product does and why it matters to this buyer.
+**3. Show the product, then prove it.** The hero's centerpiece is a physician's clause (§ 7.3, tail coverage) redlined the way Word shows track changes: the risky sentence struck in red, employer-paid language inserted in green, a comment with the dollar exposure. Right below the hero, the numbers sit as a quiet strip, not a section, and the page goes straight into how it works: three steps that advance on their own, each with a live preview (upload, redline, negotiation email). A diagram then shows what the engine checks and what it flags. Selling the product comes before any price comparison.
 
-**4. ROI as numbers, and a visual language from law and medicine.** $199, $500+ and $10,000+ are set large, in that order: what you pay, what you'd pay, what you'd lose. A bar compares the two review prices. The type is an editorial serif (Newsreader) for authority and Hanken Grotesk for the interface. The palette is paper, ink, and the two colors of a real redline, red for struck text and green for accepted text. No gradients, glow or emoji. Every color, font and shadow is a token in `src/index.css`.
+**4. The existing brand, made to look like it can be trusted with a contract.** I kept Redline MD's logo, red, navy and yellow, and cropped off the misspelled tagline. One sans family (Hanken Grotesk) with mono only for technical data, one 4px radius, no decorative gradients. Real footage of residents and of a signature replaces the generic dashboard mockups, so the page shows the person and the moment it is about. The structure and motion follow digai.ai (two-tone title, pixel grid, auto-advancing steps, live diagram, dark proof section), translated into this brand. The page also ships in English and Portuguese.
 
 Trust replaces the five unlinked certification badges with three plain promises a doctor actually worries about: encrypted, deleted after review, never shared with the employer. Plus an honest answer to "Is this legal advice?"
+
+The full token and component list is in [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md).
 
 ## Things I marked as placeholders
 
