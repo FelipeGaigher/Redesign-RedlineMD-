@@ -1,10 +1,12 @@
 import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { useT } from "../lib/i18n";
 import { EASE } from "../lib/motion";
 import { Alert, Check } from "./Icons";
 
 /*
- * 0 clause as written · 1 risky sentence struck · 2 replacement inserted · 3 risk tag.
+ * Reads like Word's track changes, because that is what a physician will open:
+ * 0 clause as written · 1 risky sentence struck · 2 replacement inserted · 3 margin comment.
  * One cycle every 6s, only while the card is on screen.
  */
 type Phase = 0 | 1 | 2 | 3;
@@ -20,6 +22,8 @@ export function ContractPreview() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.4 });
   const reduce = useReducedMotion();
+  const { t } = useT();
+  const c = t.contract;
   const [phase, setPhase] = useState<Phase>(reduce ? 3 : 0);
 
   useEffect(() => {
@@ -44,85 +48,72 @@ export function ContractPreview() {
   const flagged = phase >= 1;
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref}>
       <figure
-        aria-label="Example: Redline MD striking a physician-paid tail coverage clause and proposing employer-paid coverage"
-        className="relative overflow-hidden rounded-xl border border-line bg-surface shadow-[var(--shadow-card)]"
+        aria-label={c.aria}
+        className="overflow-hidden rounded-ui border border-line bg-surface shadow-lg"
       >
-        {/* Document chrome */}
-        <div className="flex items-center justify-between border-b border-line px-4 py-3 sm:px-5">
-          <div className="min-w-0">
-            <p className="truncate text-[13px] font-semibold text-ink">Physician Employment Agreement</p>
-            <p className="text-[12px] text-muted">§ 7.3 Professional liability · p. 14 of 28</p>
-          </div>
-          <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-paper px-2.5 py-1 text-[12px] font-medium text-muted">
-            <span className={`size-1.5 rounded-full ${phase === 0 ? "bg-muted/50" : "bg-redline"}`} />
-            {phase === 0 ? "Reviewing" : "Redlined"}
-          </span>
+        <div className="flex items-center justify-between gap-4 border-b border-line bg-wash px-4 py-2.5">
+          <p className="truncate font-mono text-[12px] text-muted">{c.file}</p>
+          <p className="shrink-0 font-mono text-[12px] text-muted">{c.page}</p>
         </div>
 
-        {/* Clause */}
-        <div className="paper-rules relative px-4 pt-5 pb-6 font-serif text-[16.5px] leading-[32px] text-ink sm:px-6 sm:text-[17.5px]">
-          <p>
-            <span className="mr-2 font-sans text-[12px] font-semibold tracking-wide text-muted">7.3</span>
-            Upon termination of this Agreement for any reason,{" "}
+        <div className="px-5 pt-6 pb-6 sm:px-7">
+          <p className="font-mono text-[12px] text-muted">{c.section}</p>
+          <p className="mt-3 text-[17px] leading-[1.7] text-ink sm:text-[18px]">
+            {c.before}
             <span className="redline-strike" data-on={flagged}>
-              Physician shall be solely responsible for obtaining and paying for extended reporting
-              (“tail”) coverage
+              {c.struck}
             </span>{" "}
-            for claims arising from services rendered during the term.
+            <AnimatePresence>
+              {phase >= 2 && (
+                <motion.span
+                  key="ins"
+                  initial={reduce ? false : { opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0, transition: { duration: 0.3 } }}
+                  transition={{ duration: 0.5, ease: EASE }}
+                  className="text-accept underline decoration-accept decoration-1 underline-offset-[4px]"
+                >
+                  {c.inserted}
+                </motion.span>
+              )}
+            </AnimatePresence>
+            {c.after}
           </p>
 
-          <AnimatePresence>
-            {phase >= 2 && (
-              <motion.p
-                key="ins"
-                initial={reduce ? false : { opacity: 0, y: 6, clipPath: "inset(0 100% 0 0)" }}
-                animate={{ opacity: 1, y: 0, clipPath: "inset(0 0% 0 0)" }}
-                exit={{ opacity: 0, transition: { duration: 0.3 } }}
-                transition={{ duration: 0.6, ease: EASE }}
-                className="mt-2 border-l-2 border-accept pl-3 text-accept"
-              >
-                <span className="underline decoration-accept/40 decoration-1 underline-offset-[5px]">
-                  Employer shall provide and pay for tail coverage at no cost to Physician.
-                </span>
-              </motion.p>
-            )}
-          </AnimatePresence>
-
-          <AnimatePresence>
-            {phase >= 3 && (
-              <motion.div
-                key="tag"
-                initial={reduce ? false : { opacity: 0, scale: 0.9, y: 8 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, transition: { duration: 0.25 } }}
-                transition={{ type: "spring", stiffness: 420, damping: 26 }}
-                className="mt-4 inline-flex items-center gap-2 rounded-lg border border-redline/20 bg-redline-soft px-3 py-2 font-sans text-[14px] text-ink shadow-[var(--shadow-float)]"
-              >
-                <Alert className="size-4 text-redline" />
-                <span>
-                  Risk: <strong className="tabular font-semibold">~$12,000</strong> exposure
-                </span>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <div className="mt-5 min-h-[76px]">
+            <AnimatePresence>
+              {phase >= 3 && (
+                <motion.aside
+                  key="comment"
+                  initial={reduce ? false : { opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, transition: { duration: 0.25 } }}
+                  transition={{ duration: 0.4, ease: EASE }}
+                  className="border-l-2 border-red bg-red-soft px-4 py-3"
+                >
+                  <p className="flex items-center gap-1.5 text-[14px] font-semibold text-ink">
+                    <Alert className="size-[1.05em] text-red" />
+                    {c.risk} <span className="tabular">~$12,000</span> {c.exposure}
+                  </p>
+                  <p className="mt-0.5 text-[13px] text-muted">{c.advice}</p>
+                </motion.aside>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
 
-        {/* Clause checklist: shows the review covers the whole contract, not one sentence */}
+        {/* The review covers the whole contract, not one sentence */}
         <ul className="grid grid-cols-3 border-t border-line text-[12px] sm:text-[13px]">
-          {[
-            { label: "Non-compete", ok: true },
-            { label: "Tail coverage", ok: false },
-            { label: "Termination", ok: true },
-          ].map((c) => (
-            <li key={c.label} className="flex items-center gap-1.5 border-r border-line px-3 py-2.5 last:border-r-0 sm:px-4">
-              {c.ok ? (
+          {c.checks.map((label, i) => ({ label, ok: i !== 1 })).map((item) => (
+            <li key={item.label} className="flex items-center gap-1.5 border-r border-line px-3 py-2.5 last:border-r-0 sm:px-4">
+              {item.ok ? (
                 <Check className="size-3.5 shrink-0 text-accept" />
               ) : (
-                <Alert className={`size-3.5 shrink-0 transition-colors ${flagged ? "text-redline" : "text-muted/50"}`} />
+                <Alert className={`size-3.5 shrink-0 transition-colors ${flagged ? "text-red" : "text-muted/50"}`} />
               )}
-              <span className="truncate text-muted">{c.label}</span>
+              <span className="truncate text-muted">{item.label}</span>
             </li>
           ))}
         </ul>

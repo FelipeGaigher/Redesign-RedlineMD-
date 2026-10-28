@@ -1,12 +1,5 @@
-/* Wordmark: "Redline" struck through in red, the product's own gesture. */
-export function Logo({ className = "" }: { className?: string }) {
-  return (
-    <span className={`inline-flex items-baseline gap-1 font-serif text-[22px] font-medium tracking-[-0.01em] text-ink ${className}`}>
-      <span className="relative inline-block leading-none">
-        Redline
-        <span aria-hidden className="absolute left-[-2px] right-[-2px] top-[47%] h-[2px] bg-redline" />
-      </span>
-      <span className="font-sans text-[13px] font-semibold tracking-[0.08em] text-ink">MD</span>
-    </span>
-  );
+/* The Redline MD logo as the client uses it today (bolt + REDLINE red + MD navy), with the misspelled tagline cropped off. */
+export function Logo({ className = "", tone = "color" }: { className?: string; tone?: "color" | "white" }) {
+  const src = tone === "color" ? "/brand/redlinemd-logo.webp" : "/brand/redlinemd-logo-white.webp";
+  return <img src={src} alt="Redline MD" width={560} height={126} className={`h-7 w-auto lg:h-8 ${className}`} />;
 }

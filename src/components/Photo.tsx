@@ -15,12 +15,8 @@ export function Photo({ src, alt, slot, className = "", priority = false, compac
   const [failed, setFailed] = useState(false);
   if (failed) {
     return (
-      <div
-        role="img"
-        aria-label={alt}
-        className={`flex items-end bg-[linear-gradient(135deg,#e9e6dd,#dcd8cc)] p-3 ${className}`}
-      >
-        {!compact && <span className="rounded-full bg-white/70 px-2.5 py-1 font-mono text-[11px] text-muted">{slot}</span>}
+      <div role="img" aria-label={alt} className={`flex items-end bg-wash p-3 ${className}`}>
+        {!compact && <span className="font-mono text-[11px] text-muted">{slot}</span>}
       </div>
     );
   }

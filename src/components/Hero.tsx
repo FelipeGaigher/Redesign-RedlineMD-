@@ -1,70 +1,64 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { scrollToId } from "../lib/lenis";
+import { useT } from "../lib/i18n";
 import { EASE, revealChild, revealParent } from "../lib/motion";
 import { useUpload } from "../lib/upload";
 import { ContractPreview } from "./ContractPreview";
 import { CtaButton } from "./CtaButton";
-import { Clock, Lock, Refund, Upload } from "./Icons";
+import { Upload } from "./Icons";
 import { Photo } from "./Photo";
-
-const ASSURANCES = [
-  { icon: Clock, text: "Instant risk preview, full review in 24h" },
-  { icon: Lock, text: "Encrypted, deleted after review" },
-  { icon: Refund, text: "Money-back guarantee" },
-];
 
 export function Hero() {
   const { openUpload } = useUpload();
   const reduce = useReducedMotion();
+  const { t } = useT();
+  const h = t.hero;
 
   return (
     <section id="top" className="relative overflow-hidden pt-24 pb-16 lg:pt-36 lg:pb-32">
       <div className="mx-auto grid max-w-[1240px] gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-10 lg:px-10">
-        <motion.div
-          className="lg:col-span-6 lg:pt-6"
-          variants={revealParent}
-          initial={reduce ? false : "hidden"}
-          animate="show"
-        >
-          <motion.p variants={revealChild} className="mb-5 inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.1em] text-muted uppercase sm:text-[13px] sm:tracking-[0.12em]">
-            <span aria-hidden className="hidden h-px w-6 bg-redline sm:block" />
-            AI contract review for new physicians
+        <motion.div className="lg:col-span-6 lg:pt-4" variants={revealParent} initial={reduce ? false : "hidden"} animate="show">
+          <motion.p variants={revealChild} className="mb-4 text-[15px] font-medium text-muted">
+            {h.eyebrow}
           </motion.p>
 
           <motion.h1
             variants={revealChild}
-            className="font-serif text-[40px] leading-[1.04] font-medium tracking-[-0.025em] text-balance text-ink sm:text-[52px] lg:text-[72px]"
+            className="text-[40px] leading-[1.02] font-semibold tracking-[-0.035em] text-balance text-navy sm:text-[56px] lg:text-[72px]"
           >
-            Don’t sign your first contract <em className="text-redline">blind.</em>
+            {h.title}
           </motion.h1>
 
-          <motion.p variants={revealChild} className="mt-6 max-w-[34rem] text-[17px] leading-relaxed text-muted lg:text-[19px]">
-            Redline MD flags the clauses that cost new doctors <strong className="font-semibold text-ink">$10,000+</strong> in
-            tail insurance and unfair terms, for a flat <strong className="font-semibold text-ink">$199</strong>.
+          <motion.p variants={revealChild} className="mt-6 max-w-[33rem] text-[17px] leading-relaxed text-muted lg:text-[19px]">
+            {h.sub[0]}
+            <strong className="font-semibold text-ink">{h.sub[1]}</strong>
+            {h.sub[2]}
+            <strong className="font-semibold text-ink">{h.sub[3]}</strong>
+            {h.sub[4]}
           </motion.p>
 
-          <motion.div variants={revealChild} className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+          <motion.div variants={revealChild} className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
             <CtaButton id="hero-cta" onClick={openUpload} icon={<Upload className="size-[18px]" />} className="w-full sm:w-auto">
-              Upload your contract
+              {h.cta}
             </CtaButton>
             <a
               href="#how"
               onClick={(e) => { e.preventDefault(); scrollToId("how"); }}
-              className="inline-flex h-11 items-center justify-center text-[16px] font-semibold text-ink underline decoration-line decoration-2 underline-offset-[6px] transition-colors hover:decoration-ink"
+              className="inline-flex h-11 items-center justify-center text-[16px] font-semibold text-navy underline decoration-navy/25 decoration-2 underline-offset-[6px] transition-colors hover:decoration-navy"
             >
-              See a sample review
+              {h.secondary}
             </a>
           </motion.div>
 
-          <motion.ul variants={revealChild} className="mt-7 flex flex-col gap-2.5 text-[14px] text-muted sm:flex-row sm:flex-wrap sm:gap-x-5">
-            {ASSURANCES.map(({ icon: Icon, text }) => (
-              <li key={text} className="inline-flex items-center gap-2">
-                <Icon className="size-4 text-accept" />
+          <motion.ul variants={revealChild} className="mt-8 space-y-1.5 border-t border-line pt-5 text-[14px] text-muted">
+            {/* Placeholder: turnaround and guarantee must be confirmed by the client before launch. */}
+            {h.assurances.map((text) => (
+              <li key={text} className="flex items-center gap-2">
+                <Tick />
                 {text}
               </li>
             ))}
           </motion.ul>
-          {/* Placeholder: guarantee and turnaround must be confirmed by the client before launch. */}
         </motion.div>
 
         <motion.div
@@ -77,20 +71,20 @@ export function Hero() {
           <div className="relative hidden lg:block">
             <Photo
               src="/images/hero-physician.webp"
-              alt="A young physician in scrubs reading her employment contract at home"
+              alt={h.photoAlt}
               slot="hero-physician.webp"
               priority
-              className="ml-auto aspect-[4/5] w-[78%] rounded-2xl"
+              className="ml-auto aspect-[4/5] w-[78%] rounded-ui"
             />
-            <div className="absolute -bottom-[4%] left-0 w-[86%]">
+            <div className="absolute -bottom-[4%] left-0 w-[88%]">
               <ContractPreview />
             </div>
-            <PriceCard className="absolute top-8 -right-2" onStart={openUpload} />
+            <PriceCard className="absolute top-8 -right-2 shadow-lg" onStart={openUpload} t={t.price} />
           </div>
 
           <div className="lg:hidden">
             <ContractPreview />
-            <PriceCard className="mt-4" onStart={openUpload} inline />
+            <PriceCard className="mt-4" onStart={openUpload} t={t.price} />
           </div>
         </motion.div>
       </div>
@@ -98,42 +92,46 @@ export function Hero() {
       <button
         type="button"
         onClick={() => scrollToId("pricing")}
-        className="absolute bottom-8 left-10 hidden items-center gap-3 text-[13px] font-medium text-muted transition-colors hover:text-ink lg:inline-flex"
+        className="absolute bottom-8 left-10 hidden cursor-pointer items-center gap-2 text-[14px] font-medium text-muted transition-colors hover:text-ink lg:inline-flex"
       >
-        <span aria-hidden className="relative h-9 w-[22px] rounded-full border border-ink/25">
-          <motion.span
-            className="absolute left-1/2 top-2 h-2 w-[2px] -translate-x-1/2 rounded bg-ink/60"
-            animate={reduce ? undefined : { y: [0, 8, 0], opacity: [1, 0.2, 1] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </span>
-        Scroll for the numbers
+        {h.scroll}
+        <motion.span
+          aria-hidden
+          animate={reduce ? undefined : { y: [0, 4, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+        >
+          ↓
+        </motion.span>
       </button>
     </section>
   );
 }
 
-function PriceCard({ className = "", onStart, inline = false }: { className?: string; onStart: () => void; inline?: boolean }) {
+function Tick() {
   return (
-    <div
-      className={`flex items-center justify-between gap-5 rounded-xl border border-line bg-surface/95 p-4 backdrop-blur ${
-        inline ? "" : "shadow-[var(--shadow-float)]"
-      } ${className}`}
-    >
+    <svg aria-hidden viewBox="0 0 16 16" className="size-4 shrink-0 text-accept" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <path d="M3.5 8.5l3 3 6-7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function PriceCard({ className = "", onStart, t }: { className?: string; onStart: () => void; t: { flat: string; vs: string; legal: string; start: string } }) {
+  return (
+    <div className={`flex items-center justify-between gap-5 rounded-ui border border-line bg-surface p-4 ${className}`}>
       <div>
-        <p className="tabular font-serif text-[30px] leading-none font-medium text-ink">
-          $199 <span className="font-sans text-[14px] font-medium text-muted">flat</span>
+        <p className="tabular text-[28px] leading-none font-semibold tracking-[-0.02em] text-navy">
+          $199 <span className="text-[14px] font-medium tracking-normal text-muted">{t.flat}</span>
         </p>
         <p className="mt-1.5 text-[13px] text-muted">
-          vs <span className="tabular line-through decoration-redline decoration-2">$500+</span> legal review
+          {t.vs} <span className="tabular line-through decoration-red decoration-2">$500+</span> {t.legal}
         </p>
       </div>
       <button
         type="button"
         onClick={onStart}
-        className="h-11 shrink-0 rounded-full bg-ink px-4 text-[14px] font-semibold text-paper transition-colors hover:bg-ink-soft"
+        className="h-11 shrink-0 cursor-pointer rounded-ui border border-navy px-4 text-[14px] font-semibold text-navy transition-colors hover:bg-navy hover:text-white"
       >
-        Start now
+        {t.start}
       </button>
     </div>
   );
