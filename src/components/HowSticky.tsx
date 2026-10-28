@@ -148,7 +148,7 @@ function UploadStage({ on }: { on: boolean }) {
           <p className="mt-1 text-[12px] text-muted">{m.phoneCamera}</p>
           <motion.ul variants={list} className="mt-4 grid grid-cols-3 gap-2">
             {Array.from({ length: 6 }, (_, i) => (
-              <motion.li key={i} variants={row} className="aspect-[3/4] rounded-[2px] border border-line bg-wash p-1.5">
+              <motion.li key={i} variants={row} className="aspect-[3/4] rounded-[4px] border border-line bg-wash p-1.5">
                 <span className="block h-1 w-3/4 bg-line" />
                 <span className="mt-1 block h-1 w-1/2 bg-line" />
                 <span className="mt-1 block h-1 w-2/3 bg-line" />

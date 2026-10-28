@@ -213,7 +213,7 @@ export function UploadDialog() {
 
               {state === "done" && (
                 <motion.div initial={reduce ? false : { opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: EASE }}>
-                  <p className="inline-flex items-center gap-2 rounded-ui bg-red-soft px-3 py-1.5 text-[14px] font-semibold text-red">
+                  <p className="inline-flex items-center gap-2 rounded-sm bg-red-soft px-3 py-1.5 text-[14px] font-semibold text-red">
                     <Alert className="size-4" /> {u.found}
                   </p>
                   <ul className="mt-4 divide-y divide-line rounded-ui border border-line">

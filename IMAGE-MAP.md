@@ -22,38 +22,7 @@ Três clipes do [Mixkit](https://mixkit.co/license/#videoFree), licença livre p
 
 Para trocar um vídeo, mantenha o nome do arquivo e gere a capa com o mesmo nome em `.jpg`.
 
-## Imagens que ainda faltam
+## Imagens
 
-| # | Seção | Arquivo | Formato | Tamanho de exportação | Peso alvo | Obrigatória |
-|---|---|---|---|---|---|---|
-| 1 | Conselho consultivo (seção escura) | `advisor-1.webp`, `advisor-2.webp`, `advisor-3.webp` | 1:1 | 256 × 256 | ≤ 20 KB | não |
-| 2 | Depoimentos | `testimonial-1.webp`, `testimonial-2.webp` | 1:1 | 256 × 256 | ≤ 20 KB | não |
-| 3 | Prévia do link | `og.png` | 1.91:1 | 1200 × 630 | ≤ 300 KB | recomendada |
-
-### 1. Conselho consultivo: `advisor-1..3.webp`
-
-**Função:** rostos do conselho consultivo (médicos e advogados de saúde).
-
-⚠️ **Só use foto real e com autorização.** Rosto gerado por IA ao lado de "Built with input from physicians and healthcare attorneys" vira prova social falsa, que é exatamente a falta de confiança que o redesign quer resolver. Para o conceito, deixe o placeholder (o código já mostra a legenda "placeholder until names are confirmed"). Se quiser preencher só para o print, use o prompt e mantenha a legenda.
-
-**Prompt (gere 3, variando idade, gênero e etnia):**
-
-> [direção comum] Square head-and-shoulders portrait, plain warm off-white background, a [healthcare attorney in a navy blazer | physician in her fifties in a white coat | physician in his forties in a navy quarter-zip], calm neutral expression, soft light from the left.
-
-### 2. Depoimentos: `testimonial-1.webp`, `testimonial-2.webp`
-
-**Função:** avatar ao lado do depoimento. Os cards já levam o selo "Illustrative testimonial". Combine cada rosto com a especialidade do texto.
-
-- **testimonial-1** (Emergency medicine, PGY-3):
-  > [direção comum] Square head-and-shoulders portrait, plain warm off-white background, a female emergency medicine resident around 30, navy scrubs, tired but relieved expression.
-- **testimonial-2** (Family medicine, new attending):
-  > [direção comum] Square head-and-shoulders portrait, plain warm off-white background, a male family physician around 34, light blue button-down shirt, calm expression.
-
-### 3. Prévia do link: `og.png`
-
-**Função:** é a imagem que aparece quando o link da Vercel é colado num e-mail ou no Slack da Foundey. Recomendo montar no Figma em vez de gerar: fundo branco, o logo, o H1 "Don't sign your first contract blind." em Hanken Grotesk 600 com "blind." em azul-marinho `#0E2E54`, e um recorte do card de redline.
-
-## Depois de gerar
-
-1. Converter para WebP com qualidade 75 a 80 (Squoosh ou `cwebp -q 78`).
-3. Salvar em `public/images/` com o nome exato e fazer push. A Vercel publica sozinha.
+- `public/og.png`: prévia do link (1200 × 630), gerada a partir do hero. Para trocar, mantenha o nome.
+- Os avatares de depoimento e do conselho consultivo saíram da página: espaço vazio parecia trabalho inacabado. Quando houver fotos reais e autorizadas, eles voltam como `public/images/testimonial-1.webp` etc., com o componente de foto do histórico do git.

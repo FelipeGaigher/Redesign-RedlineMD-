@@ -1,6 +1,6 @@
 # Redline MD: design notes
 
-A one-page concept for the Foundey design challenge. Two sections are fully finished, the hero with upload and the ROI section with how it works. Trust, testimonials, FAQ and footer are simpler and are there for context.
+A one-page concept for the Foundey design challenge. **The two sections to evaluate are the hero with the upload flow, and How it works.** Everything else (numbers strip, the checks diagram, video bands, proof, FAQ) is assembled from the same tokens and components to give those two sections context.
 
 ## Diagnosis
 
@@ -36,7 +36,7 @@ Kept from redlinemd.ai as the client states it today:
 
 From the challenge brief: the $500+ attorney comparison and the $10,000+ tail-insurance figure. The current site says "up to $10,000"; I kept the brief's "$10,000+" because it is the number Foundey wrote.
 
-Proposals of mine, to confirm with the client before launch: the money-back guarantee, "deleted after review", "never shared with your employer", the free risk preview before payment, the email-me-a-link path, comparison against specialty and state benchmarks, the advisory board, and both testimonials (labeled "Illustrative" on the page). The dollar figures inside the mockups are examples.
+Proposals of mine, to confirm with the client before launch: the money-back guarantee, "deleted after review", "never shared with your employer", the free risk preview before payment, the email-me-a-link path, comparison against specialty and state benchmarks, the and both testimonials (labeled "Illustrative" on the page). The dollar figures inside the mockups are examples.
 
 ## With more time
 

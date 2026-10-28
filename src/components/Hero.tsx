@@ -96,7 +96,7 @@ export function Hero() {
             <div className="absolute -bottom-[4%] left-0 w-[88%]">
               <ContractPreview />
             </div>
-            <PriceCard className="absolute top-8 -right-2 shadow-lg" onStart={openUpload} t={t.price} />
+            <PriceCard className="absolute -top-6 -right-4 shadow-lg" onStart={openUpload} t={t.price} />
           </div>
 
           <div className="lg:hidden">

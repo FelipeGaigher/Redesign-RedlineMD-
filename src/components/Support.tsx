@@ -3,12 +3,8 @@ import { useUpload } from "../lib/upload";
 import { CtaButton } from "./CtaButton";
 import { Logo } from "./Logo";
 import { Plus, Upload } from "./Icons";
-import { Photo } from "./Photo";
 import { PixelGrid } from "./PixelGrid";
-import { Reveal, RevealItem } from "./Reveal";
 
-
-const AVATARS = ["testimonial-1", "testimonial-2"];
 
 /* Dark proof section (pattern from digai.ai): security promises on the left, voices on the right. */
 export function Voices() {
@@ -31,26 +27,16 @@ export function Voices() {
             ))}
           </ul>
         </div>
-        <Reveal className="space-y-4 lg:col-span-6 lg:col-start-7">
-          {t.testimonials.items.map((q, i) => (
-            <RevealItem key={q.name} className="rounded-ui bg-surface p-6 text-ink shadow-xl lg:p-8">
+        {/* Static on purpose: proof must never depend on a scroll trigger to appear. */}
+        <div className="space-y-4 lg:col-span-6 lg:col-start-7">
+          {t.testimonials.items.map((q) => (
+            <figure key={q.name} className="rounded-ui bg-surface p-6 text-ink shadow-xl lg:p-8">
               <p className="font-mono text-[11px] tracking-[0.1em] text-muted uppercase">{t.testimonials.label}</p>
               <blockquote className="mt-4 text-[19px] leading-[1.45] font-medium tracking-[-0.01em] lg:text-[21px]">“{q.quote}”</blockquote>
-              <div className="mt-5 flex items-center gap-3">
-                <Photo src={`/images/${AVATARS[i]}.webp`} alt="" slot={AVATARS[i]} compact className="size-10 rounded-full" />
-                <p className="text-[14px] text-muted">{q.name}</p>
-              </div>
-            </RevealItem>
+              <figcaption className="mt-5 text-[14px] text-muted">{q.name}</figcaption>
+            </figure>
           ))}
-          <div className="flex items-center gap-4 pt-2">
-            <div className="flex -space-x-2">
-              {["advisor-1", "advisor-2", "advisor-3"].map((a) => (
-                <Photo key={a} src={`/images/${a}.webp`} alt="" slot={a} compact className="size-10 rounded-full border-2 border-navy" />
-              ))}
-            </div>
-            <p className="text-[13px] text-white/70">{t.trust.board}</p>
-          </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

@@ -114,7 +114,7 @@ export function Checks() {
                       {f.title}
                     </p>
                     <span
-                      className={`rounded-ui px-2 py-0.5 font-mono text-[11px] uppercase ${
+                      className={`rounded-sm px-2 py-0.5 font-mono text-[11px] uppercase ${
                         f.tag === c.findings[2].tag ? "bg-wash text-muted" : "bg-red-soft text-red"
                       }`}
                     >

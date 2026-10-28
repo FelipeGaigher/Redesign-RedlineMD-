@@ -43,7 +43,7 @@ Two-tone titles: the base line in `ink`, the stakes in `navy` (H1: "Don't sign y
 
 ## Shape and depth
 
-- **Radius:** one token, `rounded-ui` = 4px, for buttons, cards, inputs, tags and video. Circles only for avatars and status dots.
+- **Radius:** two tokens. `rounded-ui` = 14px for cards, panels, buttons, inputs and video; `rounded-sm` = 8px for small parts (tags, chips). Circles only for status dots and the diagram engine.
 - **Shadow:** two steps. `shadow-lg` for anything floating over content (cards in a preview, price card, open accordion item). `shadow-xl` for the upload dialog and the diagram engine.
 - **Spacing:** 4px scale. Sections 64px mobile, 96px desktop. Container 1240px with 16/24/40px gutters.
 
@@ -65,7 +65,7 @@ Two-tone titles: the base line in `ink`, the stakes in `navy` (H1: "Don't sign y
 | Dark proof section | `Support.tsx` (`Voices`) | navy, white pixel grid, quote cards |
 | Upload dialog | `UploadDialog.tsx` | bottom sheet on mobile, dialog on desktop; empty, dragging, uploading, analyzing, done, email-link states |
 | Mobile CTA bar | `MobileCtaBar.tsx` | appears once the hero CTA leaves the screen |
-| Pixel grid | `PixelGrid.tsx` | navy squares breathing at random speeds, fades from the center |
+| Pixel grid | `PixelGrid.tsx` | static field of rounded navy squares, fading from the center |
 
 ## Motion
 
@@ -79,7 +79,7 @@ Two-tone titles: the base line in `ink`, the stakes in `navy` (H1: "Don't sign y
 | Redline loop | 6s cycle, paused off-screen | — |
 | Video | plays only near the viewport, paused off-screen | — |
 
-`prefers-reduced-motion` turns off loops, counters, marquee, pixel pulse and video (poster only); content still shows in its final state.
+`prefers-reduced-motion` turns off loops, counters, marquee and video (poster only); content still shows in its final state.
 
 ## Rules
 

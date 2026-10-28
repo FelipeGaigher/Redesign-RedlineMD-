@@ -7,7 +7,7 @@
  * Design tokens. Colors come from the Redline MD brand as it exists today:
  * the logo red and navy, the site's yellow CTA, its charcoal text and warm grey surface.
  * Green is the one addition: a redline needs a color for accepted language.
- * One radius for the whole page (4px) and one type family (Hanken Grotesk); mono only for technical data.
+ * Two radii: 14px for cards, panels, buttons and video; 8px for small parts (tags, chips, inputs) and one type family (Hanken Grotesk); mono only for technical data.
  */
 @theme {
   --color-red: #d21a17;
@@ -27,7 +27,8 @@
   --font-sans: "Hanken Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
-  --radius-ui: 4px;
+  --radius-ui: 14px;
+  --radius-sm: 8px;
 
   --shadow-lg: 0 1px 2px rgb(14 46 84 / 0.06), 0 12px 28px -10px rgb(14 46 84 / 0.22);
   --shadow-xl: 0 24px 64px -16px rgb(14 46 84 / 0.35);
@@ -107,15 +108,6 @@ html.lenis body {
   }
 }
 
-@keyframes pixel-pulse {
-  0%,
-  100% {
-    fill-opacity: 1;
-  }
-  50% {
-    fill-opacity: 0.25;
-  }
-}
 
 @keyframes marquee {
   to {

@@ -71,7 +71,7 @@ export function ScriptMock() {
         ))}
       </div>
       <div className="flex justify-end border-t border-line px-5 py-3">
-        <span className="rounded-ui bg-navy px-3 py-1.5 text-[13px] font-semibold text-white">{m.scriptCopy}</span>
+        <span className="rounded-sm bg-navy px-3 py-1.5 text-[13px] font-semibold text-white">{m.scriptCopy}</span>
       </div>
     </div>
   );

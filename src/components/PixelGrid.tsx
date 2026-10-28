@@ -1,7 +1,5 @@
-import { useReducedMotion } from "framer-motion";
-
 /*
- * Field of small navy squares that breathe at different speeds, fading out toward the edges.
+ * Field of small navy squares fading out toward the edges. Static: the redline card is the only continuous motion near the CTA.
  * Same device as the reference (digai.ai). Deterministic so it renders identically on every load.
  */
 const COLS = 22;
@@ -13,7 +11,6 @@ function seeded(i: number) {
 }
 
 export function PixelGrid({ className = "", tone = "navy" }: { className?: string; tone?: "navy" | "white" }) {
-  const reduce = useReducedMotion();
   const cells = [];
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
@@ -32,10 +29,8 @@ export function PixelGrid({ className = "", tone = "navy" }: { className?: strin
           y={r * 26}
           width={20}
           height={20}
-          style={{
-            opacity: base,
-            animation: reduce ? undefined : `pixel-pulse ${3 + rnd * 3.4}s ease-in-out ${-rnd * 6}s infinite`,
-          }}
+          rx={3}
+          style={{ opacity: base }}
         />,
       );
     }
