@@ -2,7 +2,7 @@ import { animate, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 /* Counts 0 → value once, 1.2s, the first time it enters the viewport. */
-export function Counter({ value, prefix = "", suffix = "" }: { value: number; prefix?: string; suffix?: string }) {
+export function Counter({ value, prefix = "", suffix = "", locale = "en-US" }: { value: number; prefix?: string; suffix?: string; locale?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
   const reduce = useReducedMotion();
@@ -16,10 +16,10 @@ export function Counter({ value, prefix = "", suffix = "" }: { value: number; pr
 
   return (
     <span ref={ref} className="tabular">
-      <span className="sr-only">{`${prefix}${value.toLocaleString("en-US")}${suffix}`}</span>
+      <span className="sr-only">{`${prefix}${value.toLocaleString(locale)}${suffix}`}</span>
       <span aria-hidden>
         {prefix}
-        {n.toLocaleString("en-US")}
+        {n.toLocaleString(locale)}
         {suffix}
       </span>
     </span>

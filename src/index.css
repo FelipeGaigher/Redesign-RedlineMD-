@@ -106,3 +106,50 @@ html.lenis body {
     animation-duration: 0.01ms !important;
   }
 }
+
+@keyframes pixel-pulse {
+  0%,
+  100% {
+    fill-opacity: 1;
+  }
+  50% {
+    fill-opacity: 0.25;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Diagram connectors: dashes flowing toward the engine. */
+.connector {
+  fill: none;
+  stroke: rgb(14 46 84 / 0.25);
+  stroke-width: 1;
+  stroke-dasharray: 4 5;
+  vector-effect: non-scaling-stroke;
+  animation: connector-flow 1.6s linear infinite;
+}
+@keyframes connector-flow {
+  to {
+    stroke-dashoffset: -18;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .connector {
+    animation: none;
+  }
+}

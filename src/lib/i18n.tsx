@@ -6,7 +6,7 @@ const en = {
   nav: {
     links: [
       { id: "how", label: "How it works" },
-      { id: "pricing", label: "Pricing" },
+      { id: "checks", label: "What we check" },
       { id: "faq", label: "FAQ" },
     ],
     cta: "Review my contract",
@@ -15,7 +15,7 @@ const en = {
   },
   hero: {
     eyebrow: "AI contract review for new physicians",
-    title: "Don’t sign your first contract blind.",
+    title: ["Don’t sign your first contract", "blind."],
     sub: ["Redline MD flags the clauses that cost new doctors ", "$10,000+", " in tail insurance and unfair terms, for a flat ", "$199", "."],
     cta: "Upload your contract",
     secondary: "See a sample review",
@@ -37,6 +37,44 @@ const en = {
     exposure: "exposure",
     advice: "You pay for tail coverage when you leave. Ask the employer to cover it.",
     checks: ["Non-compete", "Tail coverage", "Termination"],
+  },
+  marquee: {
+    label: "Built for residents and fellows in",
+    items: ["Emergency medicine", "Family medicine", "Internal medicine", "Anesthesiology", "Radiology", "Pediatrics", "General surgery", "Psychiatry", "Hospital medicine", "OB-GYN", "Cardiology", "Orthopedics"],
+  },
+  stats: ["flat price, no hourly billing", "for the full redlined review", "pages reviewed per contract", "typical tail-coverage exposure"],
+  how: {
+    eyebrow: "How it works",
+    title: "From upload to redline in 24 hours.",
+    sub: "Three steps, no calls and no billable hours. You stay in control of what you send to the employer.",
+    items: [
+      { name: "Upload", heading: "Send it the way you have it", body: "PDF, Word or a photo of each page, from your laptop or from your phone between shifts. Encrypted on arrival." },
+      { name: "Review", heading: "AI flags what costs you money", body: "Tail coverage, non-compete radius, termination terms and call schedule, compared with your specialty. Each risk comes with a dollar estimate." },
+      { name: "Negotiate", heading: "Ask with the right words", body: "A redlined copy with suggested language and a ready-to-send script for your recruiter. Most asks fit in one email." },
+    ],
+    cta: "Upload your contract",
+    mock: {
+      files: ["Offer_Letter_Mercy.pdf", "Agreement_p1-28.jpg"],
+      ready: "Encrypted · ready for review",
+      scriptTo: "To: recruiter@mercyhealth.org",
+      scriptSubject: "Re: Physician Employment Agreement",
+      scriptBody: ["Thank you for the offer. Before signing, I’d like to discuss two terms:", "§ 7.3: I’d ask that the employer provide tail coverage, as is common for this role.", "§ 9.1: Could we reduce the non-compete radius from 25 to 10 miles?"],
+      scriptCopy: "Copy script",
+    },
+  },
+  checks: {
+    eyebrow: "What we check",
+    title: "Every clause, read against what doctors in your specialty actually get.",
+    body: "Redline MD reads the whole agreement, compares each term with specialty and state benchmarks, and flags only what is worth negotiating.",
+    cols: ["Your contract", "Redline MD", "What we flag"],
+    sources: ["Employment agreement", "Specialty benchmarks", "State law"],
+    counter: "clauses reviewed",
+    findings: [
+      { title: "Tail coverage", detail: "Physician-paid · ~$12,000 exposure", tag: "Risk" },
+      { title: "Non-compete", detail: "25 miles · 2 years after exit", tag: "Risk" },
+      { title: "Base salary", detail: "Below specialty median", tag: "Review" },
+    ],
+    analyzing: "Analyzing",
   },
   roi: {
     title: "One review. Thousands protected.",
@@ -68,6 +106,7 @@ const en = {
     ],
   },
   testimonials: {
+    title: "Doctors who read before signing.",
     label: "Illustrative testimonial",
     aria: "Testimonials",
     items: [
@@ -90,6 +129,17 @@ const en = {
     disclaimer: "Redline MD is not a law firm and does not provide legal advice.",
     links: "Privacy · Terms · contact@redlinemd.ai",
     credit: "Design concept by Felipe Gaigher for the Foundey design challenge.",
+  },
+  bands: {
+    residents: {
+      title: "Your first attending offer arrives in the middle of residency.",
+      body: "Between 80-hour weeks, nobody reads 28 pages of legal terms. That is the gap Redline MD closes.",
+    },
+    sign: {
+      title: "Read it before you sign it.",
+      body: "Upload your contract and see the first risk in under a minute.",
+      cta: "Upload your contract",
+    },
   },
   mobileBar: { vs: "flat · vs $500+", cta: "Upload contract" },
   upload: {
@@ -133,7 +183,7 @@ const pt: Dict = {
   nav: {
     links: [
       { id: "how", label: "Como funciona" },
-      { id: "pricing", label: "Preço" },
+      { id: "checks", label: "O que conferimos" },
       { id: "faq", label: "Dúvidas" },
     ],
     cta: "Revisar meu contrato",
@@ -142,7 +192,7 @@ const pt: Dict = {
   },
   hero: {
     eyebrow: "Revisão de contrato com IA para médicos recém-formados",
-    title: "Não assine seu primeiro contrato no escuro.",
+    title: ["Não assine seu primeiro contrato", "no escuro."],
     sub: ["O Redline MD aponta as cláusulas que custam ", "US$ 10.000+", " em seguro de cauda e termos injustos a médicos em início de carreira, por um preço fixo de ", "US$ 199", "."],
     cta: "Enviar meu contrato",
     secondary: "Ver uma revisão de exemplo",
@@ -164,6 +214,44 @@ const pt: Dict = {
     exposure: "de exposição",
     advice: "Você paga o seguro de cauda quando sair. Peça ao empregador para cobrir.",
     checks: ["Não concorrência", "Seguro de cauda", "Rescisão"],
+  },
+  marquee: {
+    label: "Feito para residentes e fellows de",
+    items: ["Medicina de emergência", "Medicina de família", "Clínica médica", "Anestesiologia", "Radiologia", "Pediatria", "Cirurgia geral", "Psiquiatria", "Medicina hospitalar", "Ginecologia e obstetrícia", "Cardiologia", "Ortopedia"],
+  },
+  stats: ["preço fixo, sem cobrança por hora", "para a revisão completa marcada", "páginas revisadas por contrato", "exposição típica com seguro de cauda"],
+  how: {
+    eyebrow: "Como funciona",
+    title: "Do envio à revisão marcada em 24 horas.",
+    sub: "Três passos, sem ligação e sem hora cobrada. Você decide o que envia ao empregador.",
+    items: [
+      { name: "Enviar", heading: "Mande do jeito que você tem", body: "PDF, Word ou foto de cada página, do notebook ou do celular entre um plantão e outro. Criptografado ao chegar." },
+      { name: "Revisar", heading: "A IA aponta o que custa dinheiro", body: "Seguro de cauda, raio de não concorrência, regras de rescisão e escala de sobreaviso, comparados com a sua especialidade. Cada risco vem com uma estimativa em dólar." },
+      { name: "Negociar", heading: "Peça com as palavras certas", body: "Uma cópia marcada com a redação sugerida e um roteiro pronto para enviar ao recrutador. A maioria dos pedidos cabe num e-mail." },
+    ],
+    cta: "Enviar meu contrato",
+    mock: {
+      files: ["Proposta_Mercy.pdf", "Contrato_p1-28.jpg"],
+      ready: "Criptografado · pronto para revisão",
+      scriptTo: "Para: recruiter@mercyhealth.org",
+      scriptSubject: "Re: Contrato de trabalho médico",
+      scriptBody: ["Obrigado pela proposta. Antes de assinar, gostaria de conversar sobre dois termos:", "§ 7.3: peço que o empregador cubra o seguro de cauda, como é comum para esta função.", "§ 9.1: podemos reduzir o raio de não concorrência de 25 para 10 milhas?"],
+      scriptCopy: "Copiar roteiro",
+    },
+  },
+  checks: {
+    eyebrow: "O que conferimos",
+    title: "Cada cláusula, comparada com o que médicos da sua especialidade realmente recebem.",
+    body: "O Redline MD lê o contrato inteiro, compara cada termo com referências da especialidade e do estado, e aponta só o que vale negociar.",
+    cols: ["Seu contrato", "Redline MD", "O que apontamos"],
+    sources: ["Contrato de trabalho", "Referências da especialidade", "Lei estadual"],
+    counter: "cláusulas revisadas",
+    findings: [
+      { title: "Seguro de cauda", detail: "Pago pelo médico · ~US$ 12.000 de exposição", tag: "Risco" },
+      { title: "Não concorrência", detail: "25 milhas · 2 anos após a saída", tag: "Risco" },
+      { title: "Salário base", detail: "Abaixo da mediana da especialidade", tag: "Revisar" },
+    ],
+    analyzing: "Analisando",
   },
   roi: {
     title: "Uma revisão. Milhares protegidos.",
@@ -195,6 +283,7 @@ const pt: Dict = {
     ],
   },
   testimonials: {
+    title: "Médicos que leram antes de assinar.",
     label: "Depoimento ilustrativo",
     aria: "Depoimentos",
     items: [
@@ -217,6 +306,17 @@ const pt: Dict = {
     disclaimer: "O Redline MD não é um escritório de advocacia e não presta aconselhamento jurídico.",
     links: "Privacidade · Termos · contact@redlinemd.ai",
     credit: "Conceito de design por Felipe Gaigher para o desafio de design da Foundey.",
+  },
+  bands: {
+    residents: {
+      title: "A primeira proposta de emprego chega no meio da residência.",
+      body: "Entre semanas de 80 horas, ninguém lê 28 páginas de termos jurídicos. É essa lacuna que o Redline MD fecha.",
+    },
+    sign: {
+      title: "Leia antes de assinar.",
+      body: "Envie seu contrato e veja o primeiro risco em menos de um minuto.",
+      cta: "Enviar meu contrato",
+    },
   },
   mobileBar: { vs: "fixo · contra US$ 500+", cta: "Enviar contrato" },
   upload: {

@@ -1,12 +1,13 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { scrollToId } from "../lib/lenis";
 import { useT } from "../lib/i18n";
+import { scrollToId } from "../lib/lenis";
 import { EASE, revealChild, revealParent } from "../lib/motion";
 import { useUpload } from "../lib/upload";
 import { ContractPreview } from "./ContractPreview";
 import { CtaButton } from "./CtaButton";
 import { Upload } from "./Icons";
-import { Photo } from "./Photo";
+import { LoopVideo } from "./LoopVideo";
+import { PixelGrid } from "./PixelGrid";
 
 export function Hero() {
   const { openUpload } = useUpload();
@@ -15,19 +16,38 @@ export function Hero() {
   const h = t.hero;
 
   return (
-    <section id="top" className="relative overflow-hidden pt-24 pb-16 lg:pt-36 lg:pb-32">
-      <div className="mx-auto grid max-w-[1240px] gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-10 lg:px-10">
+    <section id="top" className="relative overflow-hidden pt-24 pb-14 lg:pt-36 lg:pb-20">
+      <PixelGrid className="absolute top-10 -left-24 h-[520px] w-[900px] max-w-none opacity-35 lg:top-16 lg:left-0 lg:opacity-80" />
+
+      <div className="relative mx-auto grid max-w-[1240px] gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-10 lg:px-10">
         <motion.div className="lg:col-span-6 lg:pt-4" variants={revealParent} initial={reduce ? false : "hidden"} animate="show">
-          <motion.p variants={revealChild} className="mb-4 text-[15px] font-medium text-muted">
+          <motion.p variants={revealChild} className="mb-5 text-[15px] font-medium text-muted">
             {h.eyebrow}
           </motion.p>
 
-          <motion.h1
-            variants={revealChild}
-            className="text-[40px] leading-[1.02] font-semibold tracking-[-0.035em] text-balance text-navy sm:text-[56px] lg:text-[72px]"
-          >
-            {h.title}
-          </motion.h1>
+          {/* Two-tone headline: the line in charcoal, the stakes in brand navy. Each line rises out of its own mask. */}
+          <h1 className="text-[40px] leading-[1.04] font-semibold tracking-[-0.035em] text-balance text-ink sm:text-[56px] lg:text-[68px]">
+            {h.title.map((line, i) => (
+              <span key={line} className="block overflow-hidden pb-[0.06em]">
+                <motion.span
+                  className={`block ${i === 1 ? "text-navy" : ""}`}
+                  initial={reduce ? false : { y: "105%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.1 + i * 0.12, ease: EASE }}
+                >
+                  {line}
+                </motion.span>
+              </span>
+            ))}
+          </h1>
+
+          <motion.div
+            aria-hidden
+            className="mt-7 h-px w-24 origin-left bg-red"
+            initial={reduce ? false : { scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.6, delay: 0.45, ease: EASE }}
+          />
 
           <motion.p variants={revealChild} className="mt-6 max-w-[33rem] text-[17px] leading-relaxed text-muted lg:text-[19px]">
             {h.sub[0]}
@@ -50,7 +70,7 @@ export function Hero() {
             </a>
           </motion.div>
 
-          <motion.ul variants={revealChild} className="mt-8 space-y-1.5 border-t border-line pt-5 text-[14px] text-muted">
+          <motion.ul variants={revealChild} className="mt-8 flex flex-col gap-1.5 text-[14px] text-muted sm:flex-row sm:flex-wrap sm:gap-x-5">
             {/* Placeholder: turnaround and guarantee must be confirmed by the client before launch. */}
             {h.assurances.map((text) => (
               <li key={text} className="flex items-center gap-2">
@@ -63,19 +83,13 @@ export function Hero() {
 
         <motion.div
           className="relative lg:col-span-6"
-          initial={reduce ? false : { opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25, ease: EASE }}
+          initial={reduce ? false : { opacity: 0, x: 32 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.3, ease: EASE }}
         >
           {/* Desktop: the person behind the contract, with the product working over it */}
           <div className="relative hidden lg:block">
-            <Photo
-              src="/images/hero-physician.webp"
-              alt={h.photoAlt}
-              slot="hero-physician.webp"
-              priority
-              className="ml-auto aspect-[4/5] w-[78%] rounded-ui"
-            />
+            <LoopVideo name="hero-clipboard" label={h.photoAlt} className="ml-auto block aspect-[4/5] w-[78%] rounded-ui bg-wash" />
             <div className="absolute -bottom-[4%] left-0 w-[88%]">
               <ContractPreview />
             </div>
@@ -88,21 +102,6 @@ export function Hero() {
           </div>
         </motion.div>
       </div>
-
-      <button
-        type="button"
-        onClick={() => scrollToId("pricing")}
-        className="absolute bottom-8 left-10 hidden cursor-pointer items-center gap-2 text-[14px] font-medium text-muted transition-colors hover:text-ink lg:inline-flex"
-      >
-        {h.scroll}
-        <motion.span
-          aria-hidden
-          animate={reduce ? undefined : { y: [0, 4, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-        >
-          ↓
-        </motion.span>
-      </button>
     </section>
   );
 }

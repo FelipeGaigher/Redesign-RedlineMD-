@@ -4,69 +4,57 @@ import { CtaButton } from "./CtaButton";
 import { Logo } from "./Logo";
 import { Plus, Upload } from "./Icons";
 import { Photo } from "./Photo";
+import { PixelGrid } from "./PixelGrid";
 import { Reveal, RevealItem } from "./Reveal";
 
 
-/* The three things a doctor actually worries about, stated plainly instead of a row of unlinked badges. */
-export function TrustStrip() {
+const AVATARS = ["testimonial-1", "testimonial-2"];
+
+/* Dark proof section (pattern from digai.ai): security promises on the left, voices on the right. */
+export function Voices() {
   const { t } = useT();
   return (
-    <section className="border-t border-line py-16 lg:py-20" aria-labelledby="trust-title">
-      <div className="mx-auto grid max-w-[1240px] gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-10">
+    <section className="relative overflow-hidden bg-navy py-16 text-white lg:py-24" aria-labelledby="voices-title">
+      <PixelGrid tone="white" className="absolute -top-10 -left-20 h-[520px] w-[900px] max-w-none opacity-40" />
+      <div className="relative mx-auto grid max-w-[1240px] gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-10">
         <div className="lg:col-span-5">
-          <h2 id="trust-title" className="text-[26px] leading-[1.15] font-semibold tracking-[-0.02em] text-navy sm:text-[32px]">
-            {t.trust.title}
+          <h2 id="voices-title" className="text-[30px] leading-[1.1] font-semibold tracking-[-0.03em] text-balance sm:text-[40px]">
+            {t.testimonials.title}
           </h2>
-          <div className="mt-6 flex items-center gap-4">
-            <div className="flex -space-x-2">
-              {["advisor-1", "advisor-2", "advisor-3"].map((a) => (
-                <Photo key={a} src={`/images/${a}.webp`} alt="" slot={a} compact className="size-11 rounded-full border-2 border-white" />
-              ))}
-            </div>
-            <p className="text-[14px] text-muted">{t.trust.board}</p>
-          </div>
+          <p className="mt-4 max-w-[28rem] text-[16px] text-white/75">{t.trust.title}</p>
+          <ul className="mt-8 border-t border-white/15">
+            {t.trust.items.map(({ title, body }) => (
+              <li key={title} className="border-b border-white/15 py-4">
+                <p className="text-[15px] font-semibold">{title}</p>
+                <p className="text-[14px] text-white/70">{body}</p>
+              </li>
+            ))}
+          </ul>
         </div>
-        <Reveal as="ul" className="lg:col-span-6 lg:col-start-7">
-          {t.trust.items.map(({ title, body }) => (
-            <RevealItem as="li" key={title} className="grid gap-1 border-t border-line py-5 last:border-b sm:grid-cols-[14rem_1fr] sm:gap-6">
-              <p className="text-[16px] font-semibold text-ink">{title}</p>
-              <p className="text-[15px] text-muted">{body}</p>
+        <Reveal className="space-y-4 lg:col-span-6 lg:col-start-7">
+          {t.testimonials.items.map((q, i) => (
+            <RevealItem key={q.name} className="rounded-ui bg-surface p-6 text-ink shadow-xl lg:p-8">
+              <p className="font-mono text-[11px] tracking-[0.1em] text-muted uppercase">{t.testimonials.label}</p>
+              <blockquote className="mt-4 text-[19px] leading-[1.45] font-medium tracking-[-0.01em] lg:text-[21px]">“{q.quote}”</blockquote>
+              <div className="mt-5 flex items-center gap-3">
+                <Photo src={`/images/${AVATARS[i]}.webp`} alt="" slot={AVATARS[i]} compact className="size-10 rounded-full" />
+                <p className="text-[14px] text-muted">{q.name}</p>
+              </div>
             </RevealItem>
           ))}
+          <div className="flex items-center gap-4 pt-2">
+            <div className="flex -space-x-2">
+              {["advisor-1", "advisor-2", "advisor-3"].map((a) => (
+                <Photo key={a} src={`/images/${a}.webp`} alt="" slot={a} compact className="size-10 rounded-full border-2 border-navy" />
+              ))}
+            </div>
+            <p className="text-[13px] text-white/70">{t.trust.board}</p>
+          </div>
         </Reveal>
       </div>
     </section>
   );
 }
-
-
-const AVATARS = ["testimonial-1", "testimonial-2"];
-
-export function Testimonials() {
-  const { t } = useT();
-  return (
-    <section className="border-t border-line bg-wash py-16 lg:py-24" aria-label={t.testimonials.aria}>
-      <Reveal className="mx-auto grid max-w-[1240px] px-4 sm:px-6 md:grid-cols-2 lg:px-10">
-        {t.testimonials.items.map((q, i) => (
-          <RevealItem
-            key={q.name}
-            className="flex flex-col border-line py-8 first:pt-0 last:border-t last:pb-0 md:py-0 md:first:pr-10 md:last:border-t-0 md:last:border-l md:last:pl-10 lg:first:pr-16 lg:last:pl-16"
-          >
-            <p className="text-[12px] font-medium text-muted">{t.testimonials.label}</p>
-            <blockquote className="mt-4 flex-1 text-[22px] leading-[1.35] font-medium tracking-[-0.015em] text-ink lg:text-[26px]">
-              “{q.quote}”
-            </blockquote>
-            <div className="mt-6 flex items-center gap-3">
-              <Photo src={`/images/${AVATARS[i]}.webp`} alt="" slot={AVATARS[i]} compact className="size-10 rounded-full" />
-              <p className="text-[14px] text-muted">{q.name}</p>
-            </div>
-          </RevealItem>
-        ))}
-      </Reveal>
-    </section>
-  );
-}
-
 
 export function Faq() {
   const { openUpload } = useUpload();
