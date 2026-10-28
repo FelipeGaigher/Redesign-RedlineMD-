@@ -8,7 +8,7 @@ All colors come from the brand that exists today: the logo red and navy, the sit
 
 | Token | Hex | Use |
 |---|---|---|
-| `red` | `#D21A17` | logo bolt, struck clause text, risk tags, eyebrow labels. Never as a background block |
+| `red` | `#D21A17` | logo bolt, the emphasized word of the H1, struck clause text, risk tags, eyebrow labels. Never as a background block |
 | `red-soft` | `#FDECEC` | background of a risk comment or risk tag |
 | `navy` | `#0E2E54` | headings, the emphasized line of a title, dark sections, footer, secondary buttons |
 | `navy-soft` | `#1B4373` | hover on navy |
@@ -39,7 +39,7 @@ One family, Hanken Grotesk (variable), self-hosted. IBM Plex Mono only for techn
 | Label / eyebrow | 13px | 600, red | 0 |
 | Mono label | 11–12px | 400–500, uppercase for column labels | 0.12em |
 
-Two-tone titles: the base line in `ink`, the stakes in `navy` (H1: "Don't sign your first contract / **blind.**"). One emphasis per title, never italic.
+Two-tone titles: the base line in `ink`, the stakes in `red` (H1: "Don't sign your first contract / **blind.**"). One emphasis per title, never italic.
 
 ## Shape and depth
 
@@ -65,7 +65,7 @@ Two-tone titles: the base line in `ink`, the stakes in `navy` (H1: "Don't sign y
 | Dark proof section | `Support.tsx` (`Voices`) | navy, white pixel grid, quote cards |
 | Upload dialog | `UploadDialog.tsx` | bottom sheet on mobile, dialog on desktop; empty, dragging, uploading, analyzing, done, email-link states |
 | Mobile CTA bar | `MobileCtaBar.tsx` | appears once the hero CTA leaves the screen |
-| Pixel grid | `PixelGrid.tsx` | static field of rounded navy squares, fading from the center |
+| Pixel grid | `PixelGrid.tsx` | static field of rounded navy squares at 4–20% opacity, fading from the center; kept faint so it never competes with text |
 
 ## Motion
 

@@ -21,7 +21,7 @@ export function PixelGrid({ className = "", tone = "navy" }: { className?: strin
       const dx = (c - COLS / 2) / (COLS / 2);
       const dy = (r - ROWS / 2) / (ROWS / 2);
       const falloff = Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy));
-      const base = 0.05 + falloff * 0.22 * rnd;
+      const base = 0.04 + falloff * 0.16 * rnd;
       cells.push(
         <rect
           key={i}

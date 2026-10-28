@@ -19,7 +19,7 @@ export function Hero() {
 
   return (
     <section id="top" className="relative overflow-hidden pt-24 pb-14 lg:pt-36 lg:pb-20">
-      <PixelGrid className="absolute top-10 -left-24 h-[520px] w-[900px] max-w-none opacity-35 lg:top-16 lg:left-0 lg:opacity-80" />
+      <PixelGrid className="absolute top-10 -left-24 h-[520px] w-[900px] max-w-none opacity-20 lg:top-16 lg:left-0 lg:opacity-30" />
 
       <div className="relative mx-auto grid max-w-[1240px] gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-10 lg:px-10">
         <motion.div className="lg:col-span-6 lg:pt-4" variants={revealParent} initial={reduce ? false : "hidden"} animate="show">
@@ -27,12 +27,12 @@ export function Hero() {
             {h.eyebrow}
           </motion.p>
 
-          {/* Two-tone headline: the line in charcoal, the stakes in brand navy. Each line rises out of its own mask. */}
+          {/* Two-tone headline: the line in charcoal, the stakes in the brand red. Each line rises out of its own mask. */}
           <h1 className="text-[40px] leading-[1.04] font-semibold tracking-[-0.035em] text-balance text-ink sm:text-[56px] lg:text-[68px]">
             {h.title.map((line, i) => (
               <span key={line} className="block overflow-hidden pb-[0.06em]">
                 <motion.span
-                  className={`block ${i === 1 ? "text-navy" : ""}`}
+                  className={`block ${i === 1 ? "text-red" : ""}`}
                   initial={reduce ? false : { y: "105%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.7, delay: 0.1 + i * 0.12, ease: EASE }}
