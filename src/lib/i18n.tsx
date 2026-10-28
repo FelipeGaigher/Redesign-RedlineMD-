@@ -12,6 +12,7 @@ const en = {
     cta: "Review my contract",
     home: "Redline MD home",
     langLabel: "Language",
+    menu: "Menu",
   },
   hero: {
     eyebrow: "AI contract review for new physicians",
@@ -196,6 +197,7 @@ const pt: Dict = {
     cta: "Revisar meu contrato",
     home: "Redline MD, início",
     langLabel: "Idioma",
+    menu: "Menu",
   },
   hero: {
     eyebrow: "Revisão de contrato com IA para médicos recém-formados",

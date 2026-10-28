@@ -38,12 +38,15 @@
 
 @layer base {
   html {
+    /* clip, not hidden: blocks sideways scroll on phones without breaking position: sticky */
+    overflow-x: clip;
     background: var(--color-surface);
     color: var(--color-ink);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
   body {
+    overflow-x: clip;
     font-family: var(--font-sans);
     font-size: 16px;
     line-height: 1.6;
