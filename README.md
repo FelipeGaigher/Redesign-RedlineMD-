@@ -7,7 +7,7 @@ npm install
 npm run dev
 ```
 
-- Design rationale: [DESIGN-NOTES.md](DESIGN-NOTES.md)
+- Design rationale: [DESIGN-NOTES.md](DESIGN-NOTES.md), and the full illustrated version as a PDF: [docs/Redline-MD-Design-Rationale.pdf](docs/Redline-MD-Design-Rationale.pdf)
 - Design system (tokens, type, components, motion): [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md)
 - Images to generate and where they go: [IMAGE-MAP.md](IMAGE-MAP.md)
 
